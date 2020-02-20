@@ -1,5 +1,5 @@
 # PITCH
-This is a blog web application 
+This is a blog web application written in Python
 
 # Author
 Allan Lumumba
