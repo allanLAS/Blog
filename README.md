@@ -1,5 +1,5 @@
 # PITCH
-This is a blog web application written in Python
+This is a blog web application written in Python. A user is allowed to view blog posts and comment on them.
 
 # Author
 Allan Lumumba
