@@ -1,6 +1,6 @@
 import urllib.request, json
 from .models import Quote
-
+import requests
 url = 'http://quotes.stormconsultancy.co.uk/random.json'
 
 

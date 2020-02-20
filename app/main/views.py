@@ -7,6 +7,7 @@ from flask.views import View, MethodView
 from .. import db
 from app import requests
 import markdown
+from .. import requests
 
 
 # views
@@ -56,3 +57,8 @@ def register():
         flash('Your account has been created!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+@main.route("/quotes")
+def quote():
+    quote = requests.get_quote()
+    return render_template('quote.html',quote=quote)
