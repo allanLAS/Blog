@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% block content %}
+<div class="container-fluid welcome-page">
+    <div class="container">
+
+        <div class="row">
+
+
+            <div class="col-md-4 welcome">
+                <br><br><br>
+                <p><a href="{{url_for('main.new_post')}}">ADD POST</a></p>
+
+            </div>
+            <div class="col-md-8 welcome">
+                <br><br>
+                {% for pitch in pitches %}
+                <h3><u>{{post.title}}</u></h3>
+                    <p>{{post.description}}</p>
+                    <hr>
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
