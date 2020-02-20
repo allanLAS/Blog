@@ -21,6 +21,7 @@ def index():
 
 
 @main.route('/posts/new', methods=['GET', 'Post'])
+@login_required
 def new_post():
     form = PostForm
 
