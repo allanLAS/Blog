@@ -1,5 +1,5 @@
 # PITCH
-This is a Python web application that allows users with authentications to post their one minute pitches! The app is live here https://pitch-here.herokuapp.com/
+This is a blog web application 
 
 # Author
 Allan Lumumba
