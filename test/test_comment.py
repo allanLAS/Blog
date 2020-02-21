@@ -30,5 +30,3 @@ def test_get_comment_by_id(self):
         self.assertTrue(len(got_comments) == 1)
 
 
-if __name__ == '__main__':
-    unittest.main()
