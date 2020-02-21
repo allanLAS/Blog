@@ -1,6 +1,8 @@
-from flask import render_template, request, redirect, url_for, abort
+from flask import render_template, request, redirect, url_for, flash
 from . import main
 from flask_login import login_required, current_user
+
+from ..auth.forms import RegistrationForm
 from ..models import Post, User, Comment
 from .forms import CommentForm, PostForm
 from flask.views import View, MethodView
@@ -20,18 +22,17 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/posts/new', methods=['GET', 'Post'])
+@main.route('/posts/new', methods=['GET', 'POST'])
 @login_required
 def new_post():
-    form = PostForm
+    form = PostForm()
 
     if form.validate_on_submit():
-        description = form.description.data
+        description = form.content.data
         title = form.title.data
-        owner_id = current_user
-        category = form.category.data
+
         print(current_user._get_current_object().id)
-        new_post = Post(owner_id=current_user._get_current_object().id, title=title, description=description)
+        new_post = Post(author=current_user, title=title, content=description)
         db.session.add(new_post)
         db.session.commit()
 
@@ -51,8 +52,8 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        hashed_password = generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(username=form.username.data, email=form.email.data)
+        user.password = form.password.data
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created!')

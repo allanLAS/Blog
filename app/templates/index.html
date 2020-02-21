@@ -1,17 +1,23 @@
 {% extends 'base.html'%}
 {% block content %}
+
+ {{super ()}}
+
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles.css')}}">
 <div class="container-fluid welcome-page">
     <div class="container">
-
-        <div class="row">
+        <div class="home">
+                <h1>BLOG POST</h1>
+             <div class="row">
 
 
             <div class="col-md-4 welcome">
                 <br><br><br>
                 <p>Have a story worth sharing? You can now create your own blog post.<br> Just click the button below</p>
-                <p><a href="{{url_for('main.new_post')}}">ADD POST</a></p>
+                  <button class=" btn"><a href="{{url_for('main.new_post')}}">ADD POST</a></button>
 
             </div>
+
             <div class="col-md-8 welcome">
                 <br><br>
                 {% for pitch in pitches %}
@@ -21,6 +27,8 @@
                 {% endfor %}
 
             </div>
+        </div>
+
 
 
         </div>
